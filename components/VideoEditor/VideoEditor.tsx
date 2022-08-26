@@ -1,12 +1,13 @@
-import styles from '../../styles/VideoEditor.module.scss';
-import { useEffect, KeyboardEvent, useCallback, useState } from 'react';
+import { KeyboardEvent, useCallback, useEffect, useState } from 'react';
+
 import { useSubtitleContext } from '../../context/subtitle';
-import VideoSlot from './Video/VideoSlot';
-import SubtitleInput from './SubtitleInput';
-import { VideoMeta } from '../../types/types';
 import { useVideoEditorContext } from '../../context/videoEditor';
-import Timeline from './Timeline';
 import { downloadFile, logSetupComplete } from '../../helpers/helpers';
+import styles from '../../styles/VideoEditor.module.scss';
+import { VideoMeta } from '../../types/types';
+import SubtitleInput from './SubtitleInput';
+import Timeline from './Timeline';
+import VideoSlot from './Video/VideoSlot';
 
 type Props = {
     videoMeta: VideoMeta;

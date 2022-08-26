@@ -1,4 +1,5 @@
 import React, { createRef, useCallback, useEffect } from 'react';
+
 import { useSubtitleContext } from '../../../context/subtitle';
 import { logSetupComplete } from '../../../helpers/helpers';
 
@@ -35,7 +36,7 @@ const SubtitleTrack = ({ src }: Props) => {
       trackElementRef.current.addEventListener('load', handleOnLoad);
       logSetupComplete('<SubtitleTrack/>');
     }
-  }, [handleOnLoad]);
+  }, [handleOnLoad]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <track src={src} default ref={trackElementRef}/>

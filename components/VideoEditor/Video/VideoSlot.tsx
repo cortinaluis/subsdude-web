@@ -1,7 +1,8 @@
-import styles from '../../../styles/VideoSlot.module.scss';
-import SubtitleTrack from './SubtitleTrack';
-import { VideoMeta } from '../../../types/types';
 import { createRef, useEffect } from 'react';
+
+import styles from '../../../styles/VideoSlot.module.scss';
+import { VideoMeta } from '../../../types/types';
+import SubtitleTrack from './SubtitleTrack';
 
 type Props = {
     videoMeta: VideoMeta;

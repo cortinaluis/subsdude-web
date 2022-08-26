@@ -10,5 +10,6 @@
     "simple-import-sort/imports": "error",
     "max-len": ["error", 80]
   },
+  "plugins": ["simple-import-sort"],
   "extends": "next/core-web-vitals"
 }

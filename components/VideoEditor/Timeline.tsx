@@ -1,5 +1,12 @@
+import React, {
+  createRef,
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useState
+} from 'react';
+
 import styles from '../../styles/Timeline.module.scss';
-import React, { createRef, useState, MouseEvent, useEffect, useCallback } from 'react';
 
 type Props = {
     onSelectedProgress: (selectedProgress: number) => void;

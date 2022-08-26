@@ -1,11 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import styles from '../styles/Home.module.scss';
-import VideoEditor from '../components/VideoEditor/VideoEditor';
-import { VideoEditorProvider } from '../context/videoEditor';
-import { SubtitleProvider } from '../context/subtitle';
-import FileUpload from '../components/FileUpload';
 import { useState } from 'react';
+
+import FileUpload from '../components/FileUpload';
+import VideoEditor from '../components/VideoEditor/VideoEditor';
+import { SubtitleProvider } from '../context/subtitle';
+import { VideoEditorProvider } from '../context/videoEditor';
+import styles from '../styles/Home.module.scss';
 import { VideoMeta } from '../types/types';
 
 
