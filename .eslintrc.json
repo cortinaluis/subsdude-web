@@ -8,8 +8,9 @@
     "semi": "error",
     "semi-spacing": "error",
     "simple-import-sort/imports": "error",
-    "max-len": ["error", 80]
+    "max-len": ["error", 80],
+    "unused-imports/no-unused-imports": "error"
   },
-  "plugins": ["simple-import-sort"],
+  "plugins": ["simple-import-sort", "unused-imports"],
   "extends": "next/core-web-vitals"
 }
