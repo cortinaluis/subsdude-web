@@ -1,7 +1,7 @@
 import React, { createRef, useCallback, useEffect } from 'react';
 
-import { useSubtitleContext } from '../../../context/subtitle';
-import { logSetupComplete } from '../../../helpers/helpers';
+import { useSubtitleContext } from '../../../../context/subtitle';
+import { logSetupComplete } from '../../../../helpers/helpers';
 
 type Props = {
     src: string;

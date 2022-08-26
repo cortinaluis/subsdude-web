@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 
-import styles from '../../styles/SubtitleInput.module.scss';
+import styles from '../../../styles/SubtitleInput.module.scss';
 
 type Props = {
     activeCues: VTTCue[] | null;
