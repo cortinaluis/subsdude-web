@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { VideoMeta } from '../../types/types';
-import FileUpload from './FileUpload';
+import FileSelector from './FileSelector';
 import VideoEditor from './VideoEditor/VideoEditor';
 
 const SubsdudeApp = () => {
@@ -13,7 +13,7 @@ const SubsdudeApp = () => {
 
   return (
     <>
-      <FileUpload onVideoSelect={handleVideoSelect}/>
+      <FileSelector onVideoSelect={handleVideoSelect}/>
       {
         videoMeta !== null &&
               <VideoEditor videoMeta={videoMeta}/>
