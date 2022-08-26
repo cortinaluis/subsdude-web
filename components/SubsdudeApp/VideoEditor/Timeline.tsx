@@ -6,7 +6,7 @@ import React, {
   useState
 } from 'react';
 
-import styles from '../../styles/Timeline.module.scss';
+import styles from '../../../styles/Timeline.module.scss';
 
 type Props = {
     onSelectedProgress: (selectedProgress: number) => void;

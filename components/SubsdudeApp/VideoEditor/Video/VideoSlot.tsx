@@ -1,7 +1,7 @@
 import { createRef, useEffect } from 'react';
 
-import styles from '../../../styles/VideoSlot.module.scss';
-import { VideoMeta } from '../../../types/types';
+import styles from '../../../../styles/VideoSlot.module.scss';
+import { VideoMeta } from '../../../../types/types';
 import SubtitleTrack from './SubtitleTrack';
 
 type Props = {
@@ -37,8 +37,8 @@ const VideoSlot = ({
   return (
     <video
       ref={videoRef}
-      muted
       controls
+      autoPlay
       onLoadedData={handleLoadedData}
       onTimeUpdate={handleTimeUpdate}
       className={styles.videoSlotVideo}

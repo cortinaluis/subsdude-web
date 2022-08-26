@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 
-import styles from '../styles/FileUpload.module.scss';
-import { VideoMeta } from '../types/types';
+import styles from '../../styles/FileUpload.module.scss';
+import { VideoMeta } from '../../types/types';
 
 type Props = {
     onVideoSelect: (videoMeta: VideoMeta) => void;

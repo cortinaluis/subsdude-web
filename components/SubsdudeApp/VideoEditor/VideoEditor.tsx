@@ -1,10 +1,10 @@
 import { KeyboardEvent, useCallback, useEffect, useState } from 'react';
 
-import { useSubtitleContext } from '../../context/subtitle';
-import { useVideoEditorContext } from '../../context/videoEditor';
-import { downloadFile, logSetupComplete } from '../../helpers/helpers';
-import styles from '../../styles/VideoEditor.module.scss';
-import { VideoMeta } from '../../types/types';
+import { useSubtitleContext } from '../../../context/subtitle';
+import { useVideoEditorContext } from '../../../context/videoEditor';
+import { downloadFile, logSetupComplete } from '../../../helpers/helpers';
+import styles from '../../../styles/VideoEditor.module.scss';
+import { VideoMeta } from '../../../types/types';
 import SubtitleInput from './SubtitleInput';
 import Timeline from './Timeline';
 import VideoSlot from './Video/VideoSlot';
