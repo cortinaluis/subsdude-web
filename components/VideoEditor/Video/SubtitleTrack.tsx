@@ -36,7 +36,7 @@ const SubtitleTrack = ({ src }: Props) => {
       trackElementRef.current.addEventListener('load', handleOnLoad);
       logSetupComplete('<SubtitleTrack/>');
     }
-  }, [handleOnLoad]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <track src={src} default ref={trackElementRef}/>
