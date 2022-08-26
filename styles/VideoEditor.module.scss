@@ -1,0 +1,14 @@
+.videoEditorContainer {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    justify-items: center;
+}
+
+.videoEditorControls {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: grid;
+    width: 100%;
+    grid-column-gap: 5%;
+    grid-template-columns: 85% 10%;
+}
