@@ -11,15 +11,9 @@ const SubsdudeApp = () => {
     setVideoMeta(videoMeta);
   };
 
-  return (
-    <>
-      <FileSelector onVideoSelect={handleVideoSelect}/>
-      {
-        videoMeta !== null &&
-              <VideoEditor videoMeta={videoMeta}/>
-      }
-    </>
-  );
+  return videoMeta === null ?
+    <FileSelector onVideoSelect={handleVideoSelect}/> :
+    <VideoEditor videoMeta={videoMeta}/>;
 };
 
 export default SubsdudeApp;
