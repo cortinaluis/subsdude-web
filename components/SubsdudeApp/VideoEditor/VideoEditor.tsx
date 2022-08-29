@@ -1,4 +1,4 @@
-import { KeyboardEvent, useCallback, useEffect, useState } from 'react';
+import { KeyboardEvent, useEffect, useState } from 'react';
 
 import { useSubtitleContext } from '../../../context/subtitle';
 import { useVideoEditorContext } from '../../../context/videoEditor';
@@ -14,11 +14,7 @@ type Props = {
 }
 
 const VideoEditor = ({ videoMeta }: Props) => {
-  const {
-    allCues,
-    activeCues,
-    mapAllCuesToWebVTT,
-  } = useSubtitleContext();
+  const { mapAllCuesToWebVTT } = useSubtitleContext();
 
   const {
     isPlaying,
@@ -35,14 +31,6 @@ const VideoEditor = ({ videoMeta }: Props) => {
     const vttFile = mapAllCuesToWebVTT();
     downloadFile(vttFile, 'projectName.vtt', document);
   };
-
-  const handleInputChange = useCallback((cueId: string, value: string) => {
-    if (allCues !== null) {
-      allCues[Number(cueId) - 1].text = value;
-    } else {
-      console.log('nuuuuu');
-    }
-  }, [allCues]);
 
   const handleVideoLoad = (videoDuration: number) => {
     console.log(videoDuration);
@@ -77,10 +65,7 @@ const VideoEditor = ({ videoMeta }: Props) => {
         isEditorReady &&
               <>
                 <div className={styles.videoEditorControls}>
-                  <SubtitleInput
-                    onInputChange={handleInputChange}
-                    activeCues={activeCues}
-                  />
+                  <SubtitleInput/>
                   <button onClick={handleSaveVtt}> save new vtt</button>
                 </div>
                 <Timeline/>
