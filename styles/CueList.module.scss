@@ -1,0 +1,30 @@
+.cueListContainer {
+  height: 100%;
+  overflow: hidden;
+}
+
+.cueList {
+  display: grid;
+  grid-row-gap: 5px;
+  width: 100%;
+  height: 100%;
+  padding-top: 10px;
+  overflow-y: auto;
+}
+
+.cue {
+  background-color: white;
+  text-align: center;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 5px;
+
+  &:hover {
+    background-color: lightgray;
+    cursor: pointer;
+  }
+}
+
+.activeCue {
+  background-color: lightgray;
+}

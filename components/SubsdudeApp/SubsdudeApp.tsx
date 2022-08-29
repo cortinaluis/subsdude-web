@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
+import styles from '../../styles/SubsdudeApp.module.scss';
 import { VideoMeta } from '../../types/types';
+import CueList from './CueList';
 import FileSelector from './FileSelector';
 import VideoEditor from './VideoEditor/VideoEditor';
 
@@ -13,7 +15,10 @@ const SubsdudeApp = () => {
 
   return videoMeta === null ?
     <FileSelector onVideoSelect={handleVideoSelect}/> :
-    <VideoEditor videoMeta={videoMeta}/>;
+    <div className={styles.subsdudeApp}>
+      <VideoEditor videoMeta={videoMeta}/>
+      <CueList/>
+    </div>;
 };
 
 export default SubsdudeApp;
