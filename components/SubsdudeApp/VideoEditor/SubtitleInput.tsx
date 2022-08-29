@@ -1,20 +1,21 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useCallback } from 'react';
 
+import { useSubtitleContext } from '../../../context/subtitle';
 import styles from '../../../styles/SubtitleInput.module.scss';
 
-type Props = {
-    activeCues: VTTCue[] | null;
-    onInputChange: (cueId: string, value: string) => void;
-}
+const SubtitleInput = () => {
+  const { activeCues, allCues } = useSubtitleContext();
 
-const SubtitleInput = ({ onInputChange, activeCues }: Props) => {
-  const handleInputChange = (
-    cueId: string,
-    event: ChangeEvent<HTMLInputElement>
-  ): void => {
-    const { value } = (event.target as HTMLInputElement);
-    onInputChange(cueId, value);
-  };
+  const handleInputChange = useCallback(
+    (cueId: string, event: ChangeEvent<HTMLInputElement>) => {
+      const { value } = (event.target as HTMLInputElement);
+
+      if (allCues !== null) {
+        allCues[Number(cueId) - 1].text = value;
+      } else {
+        console.log('nuuuuu');
+      }
+    }, [allCues]);
 
   return (
     <>
