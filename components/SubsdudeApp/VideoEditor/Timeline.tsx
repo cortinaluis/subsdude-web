@@ -6,22 +6,18 @@ import React, {
   useState
 } from 'react';
 
+import { useVideoEditorContext } from '../../../context/videoEditor';
 import styles from '../../../styles/Timeline.module.scss';
 
-type Props = {
-    onSelectedProgress: (selectedProgress: number) => void;
-    onPause: () => void;
-    currentVideoTime: number;
-    videoDuration: number;
-}
-
-const Timeline = ({
-  onSelectedProgress,
-  onPause,
-  currentVideoTime,
-  videoDuration
-}: Props) => {
+const Timeline = () => {
   const contentRef = createRef<HTMLDivElement>();
+
+  const {
+    videoCurrentTime,
+    videoDuration,
+    setIsPlaying,
+    setVideoSelectedTime
+  } = useVideoEditorContext();
 
   const [cursorHoverPosition, setCursorHoverPosition]
         = useState<number>(0);
@@ -42,13 +38,13 @@ const Timeline = ({
   const calculateProgressPosition = useCallback((
     containerWidth: number
   ): number => {
-    const elapsedPercentage = (currentVideoTime * 100) / videoDuration;
+    const elapsedPercentage = (videoCurrentTime * 100) / videoDuration;
     const newPosition = (containerWidth / 100) * elapsedPercentage;
     if (isNaN(newPosition)) {
       return 0;
     }
     return Math.round(newPosition);
-  }, [currentVideoTime, videoDuration]);
+  }, [videoCurrentTime, videoDuration]);
 
   const handleMouseMove = (event: MouseEvent) => {
     if (contentRef.current !== null) {
@@ -67,10 +63,12 @@ const Timeline = ({
       const newTimePosition = event.clientX - left;
       setCursorTimePosition(newTimePosition);
 
-      onSelectedProgress(
-        calculateProgressPercentage(newTimePosition, width)
-      );
-      onPause();
+      const newVideoSelectedTime
+          = Math.round((
+            videoDuration * calculateProgressPercentage(newTimePosition, width)
+          ) / 100);
+      setVideoSelectedTime(newVideoSelectedTime);
+      setIsPlaying(false);
     }
   };
 
@@ -95,7 +93,7 @@ const Timeline = ({
       const { width } = contentRef.current.getBoundingClientRect();
       setCursorTimePosition(calculateProgressPosition(width));
     }
-  }, [calculateProgressPosition, contentRef, currentVideoTime]);
+  }, [calculateProgressPosition, contentRef, videoCurrentTime]);
 
   return (
     <div className={styles.timelineContainer}>

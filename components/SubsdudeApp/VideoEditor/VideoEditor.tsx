@@ -23,20 +23,13 @@ const VideoEditor = ({ videoMeta }: Props) => {
   const {
     isPlaying,
     setIsPlaying,
-    videoDuration,
     setVideoDuration,
-    videoCurrentTime,
     setVideoCurrentTime,
     videoSelectedTime,
-    setVideoSelectedTime
   } = useVideoEditorContext();
 
   const [isEditorReady, setIsEditorReady] = useState<boolean>(false);
 
-  const handleSelectedProgress = (progress: number) => {
-    const newVideoSelectedTime = Math.round((videoDuration * progress) / 100);
-    setVideoSelectedTime(newVideoSelectedTime);
-  };
 
   const handleSaveVtt = () => {
     const vttFile = mapAllCuesToWebVTT();
@@ -63,7 +56,6 @@ const VideoEditor = ({ videoMeta }: Props) => {
     }
   };
 
-  const handleOnPause = () => setIsPlaying(false);
 
   useEffect(() => {
     logSetupComplete('<VideoEditor/>');
@@ -91,12 +83,7 @@ const VideoEditor = ({ videoMeta }: Props) => {
                   />
                   <button onClick={handleSaveVtt}> save new vtt</button>
                 </div>
-                <Timeline
-                  onPause={handleOnPause}
-                  onSelectedProgress={handleSelectedProgress}
-                  currentVideoTime={videoCurrentTime}
-                  videoDuration={videoDuration}
-                />
+                <Timeline/>
               </>
       }
 
