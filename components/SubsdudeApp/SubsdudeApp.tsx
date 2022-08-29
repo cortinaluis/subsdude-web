@@ -1,13 +1,12 @@
-import { useState } from 'react';
 
+import { useVideoEditorContext } from '../../context/videoEditor';
 import styles from '../../styles/SubsdudeApp.module.scss';
-import { VideoMeta } from '../../types/types';
 import CueList from './CueList';
 import FileSelector from './FileSelector';
 import VideoEditor from './VideoEditor/VideoEditor';
 
 const SubsdudeApp = () => {
-  const [videoMeta, setVideoMeta] = useState<VideoMeta | null>(null);
+  const { videoMeta, setVideoMeta } = useVideoEditorContext();
 
   const handleVideoSelect = (videoMeta: VideoMeta) => {
     setVideoMeta(videoMeta);
