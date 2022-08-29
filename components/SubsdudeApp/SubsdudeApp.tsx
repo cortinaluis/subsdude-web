@@ -6,14 +6,10 @@ import FileSelector from './FileSelector';
 import VideoEditor from './VideoEditor/VideoEditor';
 
 const SubsdudeApp = () => {
-  const { videoMeta, setVideoMeta } = useVideoEditorContext();
-
-  const handleVideoSelect = (videoMeta: VideoMeta) => {
-    setVideoMeta(videoMeta);
-  };
+  const { videoMeta } = useVideoEditorContext();
 
   return videoMeta === null ?
-    <FileSelector onVideoSelect={handleVideoSelect}/> :
+    <FileSelector /> :
     <div className={styles.subsdudeApp}>
       <VideoEditor videoMeta={videoMeta}/>
       <CueList/>

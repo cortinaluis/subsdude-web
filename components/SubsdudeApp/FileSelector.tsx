@@ -1,13 +1,12 @@
 import { ChangeEvent } from 'react';
 
+import { useVideoEditorContext } from '../../context/videoEditor';
 import styles from '../../styles/FileSelector.module.scss';
 import { VideoMeta } from '../../types/types';
 
-type Props = {
-    onVideoSelect: (videoMeta: VideoMeta) => void;
-}
+const FileSelector = () => {
+  const { setVideoMeta } = useVideoEditorContext();
 
-const FileSelector = ({ onVideoSelect }: Props) => {
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files !== null) {
       console.log(event.target.files);
@@ -21,7 +20,7 @@ const FileSelector = ({ onVideoSelect }: Props) => {
         }, { videoSrc: '', subtitleSrc: '' });
 
       console.log(videoMeta);
-      onVideoSelect(videoMeta);
+      setVideoMeta(videoMeta);
     }
   };
 
