@@ -1,6 +1,10 @@
 import { createContext, useContext, useState } from 'react';
 
+import { VideoMeta } from '../types/types';
+
 interface IVideoEditorContext {
+    videoMeta: VideoMeta | null;
+    setVideoMeta: (newVideoMeta: VideoMeta) => void;
     isPlaying: boolean;
     setIsPlaying: (isPlaying: boolean) => void;
     videoDuration: number;
@@ -12,6 +16,9 @@ interface IVideoEditorContext {
 }
 
 const defaultVideoEditorContext: IVideoEditorContext = {
+  videoMeta: null,
+  setVideoMeta: () => {
+  },
   isPlaying: false,
   setIsPlaying: () => {
   },
@@ -38,10 +45,14 @@ export const VideoEditorProvider = ({ children }: any) => {
         = useState<boolean>(defaultVideoEditorContext.isPlaying);
   const [videoSelectedTime, updateVideoSelectedTime]
         = useState<number>(defaultVideoEditorContext.videoSelectedTime);
+  const [videoMeta, setVideoMeta] = useState<VideoMeta | null>(null);
+
 
   return (
     <VideoEditorContext.Provider
       value={{
+        videoMeta,
+        setVideoMeta,
         isPlaying,
         setIsPlaying: updateIsPlaying,
         videoDuration,
