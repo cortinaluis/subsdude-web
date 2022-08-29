@@ -4,7 +4,7 @@ import { useSubtitleContext } from '../../../../context/subtitle';
 import { logSetupComplete } from '../../../../helpers/helpers';
 
 type Props = {
-    src: string;
+    src?: string;
 }
 const SubtitleTrack = ({ src }: Props) => {
   const { setAllCues, setActiveCues } = useSubtitleContext();

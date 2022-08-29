@@ -11,7 +11,7 @@ const SubsdudeApp = () => {
   return videoMeta === null ?
     <FileSelector /> :
     <div className={styles.subsdudeApp}>
-      <VideoEditor videoMeta={videoMeta}/>
+      <VideoEditor/>
       <CueList/>
     </div>;
 };
