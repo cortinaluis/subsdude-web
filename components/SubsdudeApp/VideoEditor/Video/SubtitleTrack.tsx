@@ -1,13 +1,12 @@
 import React, { createRef, useCallback, useEffect } from 'react';
 
 import { useSubtitleContext } from '../../../../context/subtitle';
+import { useVideoEditorContext } from '../../../../context/videoEditor';
 import { logSetupComplete } from '../../../../helpers/helpers';
 
-type Props = {
-    src?: string;
-}
-const SubtitleTrack = ({ src }: Props) => {
+const SubtitleTrack = () => {
   const { setAllCues, setActiveCues } = useSubtitleContext();
+  const { videoMeta } = useVideoEditorContext();
 
   // I really tried not to use ref here... but the <track> el seems very limited
   // event-wise
@@ -39,7 +38,7 @@ const SubtitleTrack = ({ src }: Props) => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <track src={src} default ref={trackElementRef}/>
+    <track src={videoMeta?.subtitleSrc} default ref={trackElementRef}/>
   );
 };
 
