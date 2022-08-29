@@ -58,11 +58,12 @@ const VideoEditor = ({ videoMeta }: Props) => {
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    console.log(event);
     if (event.key === ' ') {
       setIsPlaying(!isPlaying);
     }
   };
+
+  const handleOnPause = () => setIsPlaying(false);
 
   useEffect(() => {
     logSetupComplete('<VideoEditor/>');
@@ -91,7 +92,7 @@ const VideoEditor = ({ videoMeta }: Props) => {
                   <button onClick={handleSaveVtt}> save new vtt</button>
                 </div>
                 <Timeline
-                  onPause={() => setIsPlaying(false)}
+                  onPause={handleOnPause}
                   onSelectedProgress={handleSelectedProgress}
                   currentVideoTime={videoCurrentTime}
                   videoDuration={videoDuration}
