@@ -48,7 +48,7 @@ const VideoSlot = ({ onVideoLoad }: Props) => {
       className={styles.videoSlotVideo}
       src={videoMeta?.videoSrc}
     >
-      <SubtitleTrack src={videoMeta?.subtitleSrc}/>
+      <SubtitleTrack />
     </video>
   );
 };
