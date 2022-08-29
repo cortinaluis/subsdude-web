@@ -1,5 +1,6 @@
 import { createRef, useEffect } from 'react';
 
+import { useVideoEditorContext } from '../../../../context/videoEditor';
 import styles from '../../../../styles/VideoSlot.module.scss';
 import { VideoMeta } from '../../../../types/types';
 import SubtitleTrack from './SubtitleTrack';
@@ -15,9 +16,10 @@ const VideoSlot = ({
   videoMeta,
   onVideoLoad,
   onTimeUpdate,
-  videoSelectedTime
+  videoSelectedTime,
 }: Props) => {
   const videoRef = createRef<HTMLVideoElement>();
+  const { isPlaying } = useVideoEditorContext();
 
   const handleTimeUpdate = (event: any) => {
     onTimeUpdate(event.target.currentTime);
@@ -30,9 +32,12 @@ const VideoSlot = ({
   useEffect(() => {
     if (videoRef.current !== null) {
       videoRef.current.currentTime = videoSelectedTime;
+      isPlaying ? videoRef.current.play() : videoRef.current.pause();
     }
-    // disabled eslint in next line, if we include videoRef it breaks the player
-  }, [videoSelectedTime]); // eslint-disable-line react-hooks/exhaustive-deps
+  },
+  // disabled eslint in next line, if we include videoRef it breaks the player
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [videoSelectedTime, isPlaying]);
 
   return (
     <video
