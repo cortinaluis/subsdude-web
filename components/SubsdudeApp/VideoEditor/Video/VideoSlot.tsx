@@ -2,31 +2,30 @@ import { createRef, useEffect } from 'react';
 
 import { useVideoEditorContext } from '../../../../context/videoEditor';
 import styles from '../../../../styles/VideoSlot.module.scss';
-import { VideoMeta } from '../../../../types/types';
 import SubtitleTrack from './SubtitleTrack';
 
 type Props = {
-    videoMeta: VideoMeta;
-    onVideoLoad: (videoDuration: number) => void;
-    onTimeUpdate: (newCurrentTime: number) => void;
-    videoSelectedTime: number;
+    onVideoLoad: () => void;
 }
 
-const VideoSlot = ({
-  videoMeta,
-  onVideoLoad,
-  onTimeUpdate,
-  videoSelectedTime,
-}: Props) => {
+const VideoSlot = ({ onVideoLoad }: Props) => {
   const videoRef = createRef<HTMLVideoElement>();
-  const { isPlaying } = useVideoEditorContext();
+
+  const {
+    videoMeta,
+    setVideoDuration,
+    isPlaying,
+    setVideoCurrentTime,
+    videoSelectedTime,
+  } = useVideoEditorContext();
 
   const handleTimeUpdate = (event: any) => {
-    onTimeUpdate(event.target.currentTime);
+    setVideoCurrentTime(event.target.currentTime);
   };
 
   const handleLoadedData = (event: any) => {
-    onVideoLoad(event.target.duration);
+    setVideoDuration(event.target.duration);
+    onVideoLoad();
   };
 
   useEffect(() => {
@@ -47,9 +46,9 @@ const VideoSlot = ({
       onLoadedData={handleLoadedData}
       onTimeUpdate={handleTimeUpdate}
       className={styles.videoSlotVideo}
-      src={videoMeta.videoSrc}
+      src={videoMeta?.videoSrc}
     >
-      <SubtitleTrack src={videoMeta.subtitleSrc}/>
+      <SubtitleTrack src={videoMeta?.subtitleSrc}/>
     </video>
   );
 };

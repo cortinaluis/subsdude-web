@@ -4,24 +4,16 @@ import { useSubtitleContext } from '../../../context/subtitle';
 import { useVideoEditorContext } from '../../../context/videoEditor';
 import { downloadFile, logSetupComplete } from '../../../helpers/helpers';
 import styles from '../../../styles/VideoEditor.module.scss';
-import { VideoMeta } from '../../../types/types';
 import SubtitleInput from './SubtitleInput';
 import Timeline from './Timeline';
 import VideoSlot from './Video/VideoSlot';
 
-type Props = {
-    videoMeta: VideoMeta;
-}
-
-const VideoEditor = ({ videoMeta }: Props) => {
+const VideoEditor = () => {
   const { mapAllCuesToWebVTT } = useSubtitleContext();
 
   const {
     isPlaying,
     setIsPlaying,
-    setVideoDuration,
-    setVideoCurrentTime,
-    videoSelectedTime,
   } = useVideoEditorContext();
 
   const [isEditorReady, setIsEditorReady] = useState<boolean>(false);
@@ -32,9 +24,7 @@ const VideoEditor = ({ videoMeta }: Props) => {
     downloadFile(vttFile, 'projectName.vtt', document);
   };
 
-  const handleVideoLoad = (videoDuration: number) => {
-    console.log(videoDuration);
-    setVideoDuration(videoDuration);
+  const handleVideoLoad = () => {
     setIsEditorReady(true);
   };
 
@@ -57,9 +47,6 @@ const VideoEditor = ({ videoMeta }: Props) => {
     >
       <VideoSlot
         onVideoLoad={handleVideoLoad}
-        videoMeta={videoMeta}
-        onTimeUpdate={setVideoCurrentTime}
-        videoSelectedTime={videoSelectedTime}
       />
       {
         isEditorReady &&
