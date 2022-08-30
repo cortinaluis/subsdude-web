@@ -1,4 +1,4 @@
-const convertDecimalTimestampToFormatted = (decimal: number): string => {
+function convertDecimalTimestampToFormatted(decimal: number): string {
   const [totalBigTime, milliseconds] = `${decimal}`.split('.');
 
   let total = Number(totalBigTime);
@@ -14,19 +14,19 @@ const convertDecimalTimestampToFormatted = (decimal: number): string => {
   const paddedSeconds = seconds.toString().padStart(2, '0');
   const paddedMilliseconds = milliseconds.padEnd(3, '0');
   return `00:${paddedMinutes}:${paddedSeconds}.${paddedMilliseconds}`;
-};
+}
 
-const mapCueToVttSegment = ({ startTime, id, endTime, text }: VTTCue) => {
+function mapCueToVttSegment({ startTime, id, endTime, text }: VTTCue) {
   const startTimeFormatted = convertDecimalTimestampToFormatted(startTime);
   const endTimeFormatted = convertDecimalTimestampToFormatted(endTime);
   return `${id}\n${startTimeFormatted} --> ${endTimeFormatted}\n${text}\n`;
-};
+}
 
-export const mapCuesToWebVTT = (cues: VTTCue[]) => {
+export function mapCuesToWebVTT(cues: VTTCue[]): string {
   if (!cues.length) {
     throw new Error('Cannot map cues as they are `null`.');
   }
   return (
     `WEBVTT\n\n${Object.values(cues).map(mapCueToVttSegment).join('\n')}`
   );
-};
+}

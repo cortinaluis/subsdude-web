@@ -1,16 +1,16 @@
-export const logSetupComplete = (component: string): void => {
+export function logSetupComplete(component: string): void {
   console.log(
     `%c${component} %csetup complete`,
     'color: yellow; background: black',
     'color: white; background: black'
   );
-};
+}
 
-export const downloadFile = (
+export function downloadFile(
   contents: string,
   fileName: string,
   __document: Document
-): void => {
+): void {
   const element = __document.createElement('a');
   const file = new Blob([contents], {
     type: 'text/plain'
@@ -20,4 +20,4 @@ export const downloadFile = (
   __document.body.appendChild(element);
   element.click();
   __document.body.removeChild(element);
-};
+}
