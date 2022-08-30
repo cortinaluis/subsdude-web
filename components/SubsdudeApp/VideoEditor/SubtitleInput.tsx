@@ -9,26 +9,20 @@ const SubtitleInput = () => {
   const handleInputChange = useCallback(
     (cueId: string, event: ChangeEvent<HTMLInputElement>) => {
       const { value } = (event.target as HTMLInputElement);
-
-      if (allCues !== null) {
-        allCues[Number(cueId) - 1].text = value;
-      } else {
-        console.log('nuuuuu');
-      }
+      allCues[Number(cueId) - 1].text = value;
     }, [allCues]);
 
-  return (
+  return !activeCues.length
+    ?
+    <input
+      type="text"
+      className={styles.subtitleInput}
+      placeholder="no subtitle segment in timeframe..."
+    />
+    :
     <>
       {
-        (activeCues === null || !activeCues.length) &&
-              <input
-                type="text"
-                className={styles.subtitleInput}
-                placeholder="no subtitle segment in timeframe..."
-              />
-      }
-      {
-        activeCues !== null && activeCues.map((cue) => (
+        activeCues.map((cue) => (
           <input
             key={cue.id}
             type="text"
@@ -39,8 +33,7 @@ const SubtitleInput = () => {
           />
         ))
       }
-    </>
-  );
+    </>;
 };
 
 export default SubtitleInput;

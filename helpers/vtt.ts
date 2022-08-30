@@ -22,8 +22,8 @@ const mapCueToVttSegment = ({ startTime, id, endTime, text }: VTTCue) => {
   return `${id}\n${startTimeFormatted} --> ${endTimeFormatted}\n${text}\n`;
 };
 
-export const mapCuesToWebVTT = (cues: VTTCue[] | null) => {
-  if (cues === null) {
+export const mapCuesToWebVTT = (cues: VTTCue[]) => {
+  if (!cues.length) {
     throw new Error('Cannot map cues as they are `null`.');
   }
   return (

@@ -27,7 +27,7 @@ const CueList = () => {
 
   const getCueClasses = useCallback((cue: VTTCue): string =>
     [
-      styles.cue, activeCues?.includes(cue) ? styles.activeCue : ''
+      styles.cue, activeCues.includes(cue) ? styles.activeCue : ''
     ].join(' '), [activeCues]);
 
   return (
@@ -43,7 +43,7 @@ const CueList = () => {
       </label>
       <div className={styles.cueList}>
         {
-          allCues !== null && allCues.map((cue: VTTCue) => (
+          allCues.length && allCues.map((cue: VTTCue) => (
             <div
               key={cue.id}
               className={getCueClasses(cue)}
