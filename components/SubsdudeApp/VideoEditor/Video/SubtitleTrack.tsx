@@ -29,7 +29,6 @@ const SubtitleTrack = () => {
     }
   }, [setActiveCues, setAllCues, trackElementRef]);
 
-
   useEffect(() => {
     if (trackElementRef.current !== null) {
       trackElementRef.current.addEventListener('load', handleOnLoad);
