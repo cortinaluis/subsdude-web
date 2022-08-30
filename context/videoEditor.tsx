@@ -1,18 +1,24 @@
-import { createContext, useContext, useState } from 'react';
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useState
+} from 'react';
 
 import { VideoMeta } from '../types/types';
 
 interface IVideoEditorContext {
     videoMeta: VideoMeta | null;
-    setVideoMeta: (newVideoMeta: VideoMeta) => void;
+    setVideoMeta: Dispatch<SetStateAction<VideoMeta | null>>;
     isPlaying: boolean;
-    setIsPlaying: (isPlaying: boolean) => void;
+    setIsPlaying: Dispatch<SetStateAction<boolean>>;
     videoDuration: number;
-    setVideoDuration: (newDuration: number) => void;
+    setVideoDuration: Dispatch<SetStateAction<number>>;
     videoCurrentTime: number;
-    setVideoCurrentTime: (newVideoCurrentTime: number) => void;
+    setVideoCurrentTime: Dispatch<SetStateAction<number>>;
     videoSelectedTime: number;
-    setVideoSelectedTime: (newVideoSelectedTime: number) => void;
+    setVideoSelectedTime: Dispatch<SetStateAction<number>>;
 }
 
 const defaultVideoEditorContext: IVideoEditorContext = {
