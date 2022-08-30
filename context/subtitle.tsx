@@ -8,19 +8,17 @@ import {
 
 import { mapCuesToWebVTT } from '../helpers/vtt';
 
-type CueCollection = VTTCue[] | null;
-
 interface ISubtitleContext {
-    allCues: CueCollection;
-    activeCues: CueCollection;
-    setAllCues: Dispatch<SetStateAction<CueCollection>>;
-    setActiveCues: Dispatch<SetStateAction<CueCollection>>;
+    allCues: VTTCue[];
+    activeCues: VTTCue[];
+    setAllCues: Dispatch<SetStateAction<VTTCue[]>>;
+    setActiveCues: Dispatch<SetStateAction<VTTCue[]>>;
     mapAllCuesToWebVTT: () => string;
 }
 
 const defaultSubtitleContext: ISubtitleContext = {
-  allCues: null,
-  activeCues: null,
+  allCues: [],
+  activeCues: [],
   setAllCues: () => {
   },
   setActiveCues: () => {
@@ -33,9 +31,9 @@ const SubtitleContext =
 
 export const SubtitleProvider = ({ children }: any) => {
   const [allCues, updateAllCues]
-        = useState<VTTCue[] | null>(defaultSubtitleContext.allCues);
+        = useState<VTTCue[]>(defaultSubtitleContext.allCues);
   const [activeCues, updateActiveCues]
-        = useState<VTTCue[] | null>(defaultSubtitleContext.activeCues);
+        = useState<VTTCue[]>(defaultSubtitleContext.activeCues);
 
   return (
     <SubtitleContext.Provider
