@@ -20,7 +20,7 @@ const SubtitleTrack = () => {
         track.oncuechange = (event: Event): void => {
           const target = event.target as TextTrack;
           if (target !== null && target.activeCues !== null) {
-            setActiveCues([...Object.values(target.activeCues)] as VTTCue[]);
+            setActiveCues(Object.values(target.activeCues) as VTTCue[]);
           }
         };
 
