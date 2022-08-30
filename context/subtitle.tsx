@@ -1,11 +1,20 @@
-import { createContext, useContext, useState } from 'react';
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useState
+} from 'react';
+
 import { mapCuesToWebVTT } from '../helpers/vtt';
 
+type CueCollection = VTTCue[] | null;
+
 interface ISubtitleContext {
-    allCues: VTTCue[] | null;
-    activeCues: VTTCue[] | null;
-    setAllCues: (newCues: VTTCue[]) => void;
-    setActiveCues: (newCues: VTTCue[]) => void;
+    allCues: CueCollection;
+    activeCues: CueCollection;
+    setAllCues: Dispatch<SetStateAction<CueCollection>>;
+    setActiveCues: Dispatch<SetStateAction<CueCollection>>;
     mapAllCuesToWebVTT: () => string;
 }
 
