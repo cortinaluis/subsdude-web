@@ -10,14 +10,9 @@ import VideoSlot from './Video/VideoSlot';
 
 const VideoEditor = () => {
   const { mapAllCuesToWebVTT } = useSubtitleContext();
-
-  const {
-    isPlaying,
-    setIsPlaying,
-  } = useVideoEditorContext();
+  const { isPlaying, setIsPlaying } = useVideoEditorContext();
 
   const [isEditorReady, setIsEditorReady] = useState<boolean>(false);
-
 
   const handleSaveVtt = () => {
     const vttFile = mapAllCuesToWebVTT();
@@ -33,7 +28,6 @@ const VideoEditor = () => {
       setIsPlaying(!isPlaying);
     }
   };
-
 
   useEffect(() => {
     logSetupComplete('<VideoEditor/>');
@@ -62,6 +56,5 @@ const VideoEditor = () => {
     </div>
   );
 };
-
 
 export default VideoEditor;

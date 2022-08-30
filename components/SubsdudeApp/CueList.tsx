@@ -5,15 +5,8 @@ import { useVideoEditorContext } from '../../context/videoEditor';
 import styles from '../../styles/CueList.module.scss';
 
 const CueList = () => {
-  const {
-    setIsPlaying,
-    setVideoSelectedTime
-  } = useVideoEditorContext();
-
-  const {
-    allCues,
-    activeCues,
-  } = useSubtitleContext();
+  const { setIsPlaying, setVideoSelectedTime } = useVideoEditorContext();
+  const { allCues, activeCues } = useSubtitleContext();
 
   const [pauseVideoOnCueChange, setPauseVideoOnCueChange] =
     useState<boolean>(true);

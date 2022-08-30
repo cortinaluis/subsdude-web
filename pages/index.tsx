@@ -6,7 +6,6 @@ import { SubtitleProvider } from '../context/subtitle';
 import { VideoEditorProvider } from '../context/videoEditor';
 import styles from '../styles/Home.module.scss';
 
-
 const Home: NextPage = () => {
 
   return (
