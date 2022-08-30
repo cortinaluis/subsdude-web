@@ -1,6 +1,6 @@
 export const logSetupComplete = (component: string): void => {
   console.log(
-    `%c${component} %csetup complete.`,
+    `%c${component} %csetup complete`,
     'color: yellow; background: black',
     'color: white; background: black'
   );
