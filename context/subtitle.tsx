@@ -14,6 +14,10 @@ interface ISubtitleContext {
     setAllCues: Dispatch<SetStateAction<VTTCue[]>>;
     setActiveCues: Dispatch<SetStateAction<VTTCue[]>>;
     mapAllCuesToWebVTT: () => string;
+    hoveredCue: VTTCue | null;
+    setHoveredCue: Dispatch<SetStateAction<VTTCue | null>>;
+    selectedCue: VTTCue | null;
+    setSelectedCue: Dispatch<SetStateAction<VTTCue | null>>;
 }
 
 const defaultSubtitleContext: ISubtitleContext = {
@@ -24,6 +28,12 @@ const defaultSubtitleContext: ISubtitleContext = {
   setActiveCues: () => {
   },
   mapAllCuesToWebVTT: () => '',
+  hoveredCue: null,
+  selectedCue: null,
+  setHoveredCue: () => {
+  },
+  setSelectedCue: () => {
+  }
 };
 
 const SubtitleContext =
@@ -34,6 +44,10 @@ export const SubtitleProvider = ({ children }: any) => {
         = useState<VTTCue[]>(defaultSubtitleContext.allCues);
   const [activeCues, updateActiveCues]
         = useState<VTTCue[]>(defaultSubtitleContext.activeCues);
+  const [hoveredCue, updateHoveredCue]
+        = useState<VTTCue | null>(defaultSubtitleContext.hoveredCue);
+  const [selectedCue, updateSelectedCue]
+        = useState<VTTCue | null>(defaultSubtitleContext.selectedCue);
 
   return (
     <SubtitleContext.Provider
@@ -42,7 +56,11 @@ export const SubtitleProvider = ({ children }: any) => {
         activeCues,
         setAllCues: updateAllCues,
         setActiveCues: updateActiveCues,
-        mapAllCuesToWebVTT: () => mapCuesToWebVTT(allCues)
+        mapAllCuesToWebVTT: () => mapCuesToWebVTT(allCues),
+        hoveredCue,
+        setHoveredCue: updateHoveredCue,
+        selectedCue,
+        setSelectedCue: updateSelectedCue
       }}
     >
       {children}
