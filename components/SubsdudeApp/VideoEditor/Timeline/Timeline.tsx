@@ -8,6 +8,7 @@ import React, {
 
 import { useVideoEditorContext } from '../../../../context/videoEditor';
 import styles from '../../../../styles/Timeline.module.scss';
+import TimelineCueList from './TimelineCueList';
 
 const Timeline = () => {
   const contentRef = createRef<HTMLDivElement>();
@@ -64,9 +65,9 @@ const Timeline = () => {
       setCursorTimePosition(newTimePosition);
 
       const newVideoSelectedTime
-          = Math.round((
-            videoDuration * calculateProgressPercentage(newTimePosition, width)
-          ) / 100);
+        = Math.round((
+          videoDuration * calculateProgressPercentage(newTimePosition, width)
+        ) / 100);
       setVideoSelectedTime(newVideoSelectedTime);
       setIsPlaying(false);
     }
@@ -113,6 +114,7 @@ const Timeline = () => {
             className={styles.cursor}
             style={{ left: cursorTimePosition }}
           />
+          <TimelineCueList/>
         </div>
       </div>
       <div style={{ position: 'absolute', top: 1, right: 1 }}>
