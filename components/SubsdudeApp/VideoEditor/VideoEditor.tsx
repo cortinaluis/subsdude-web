@@ -4,10 +4,8 @@ import { useSubtitleContext } from '../../../context/subtitle';
 import { useVideoEditorContext } from '../../../context/videoEditor';
 import { downloadFile, logSetupComplete } from '../../../helpers/helpers';
 import styles from '../../../styles/VideoEditor.module.scss';
-import SubtitleInput from './SubtitleInput';
-import Timeline from './Timeline';
-import VideoSlot from './Video/VideoSlot';
 import Timeline from './Timeline/Timeline';
+import VideoSlot from './Video/VideoSlot';
 
 const VideoEditor = () => {
   const { mapAllCuesToWebVTT } = useSubtitleContext();
@@ -44,16 +42,9 @@ const VideoEditor = () => {
         onVideoLoad={handleVideoLoad}
       />
       {
-        isEditorReady &&
-              <>
-                <div className={styles.videoEditorControls}>
-                  <SubtitleInput/>
-                  <button onClick={handleSaveVtt}> save new vtt</button>
-                </div>
-                <Timeline/>
-              </>
+        isEditorReady && <Timeline/>
       }
-
+      <button onClick={handleSaveVtt}> save new vtt</button>
     </div>
   );
 };
