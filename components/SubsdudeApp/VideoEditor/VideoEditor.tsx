@@ -7,6 +7,7 @@ import styles from '../../../styles/VideoEditor.module.scss';
 import SubtitleInput from './SubtitleInput';
 import Timeline from './Timeline';
 import VideoSlot from './Video/VideoSlot';
+import Timeline from './Timeline/Timeline';
 
 const VideoEditor = () => {
   const { mapAllCuesToWebVTT } = useSubtitleContext();

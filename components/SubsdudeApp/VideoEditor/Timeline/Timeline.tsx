@@ -6,8 +6,8 @@ import React, {
   useState
 } from 'react';
 
-import { useVideoEditorContext } from '../../../context/videoEditor';
-import styles from '../../../styles/Timeline.module.scss';
+import { useVideoEditorContext } from '../../../../context/videoEditor';
+import styles from '../../../../styles/Timeline.module.scss';
 
 const Timeline = () => {
   const contentRef = createRef<HTMLDivElement>();
