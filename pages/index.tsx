@@ -13,7 +13,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Subsdude</title>
         <meta name="description" content="Subsdude!"/>
-        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
       </Head>
 
       <main className={styles.main}>
