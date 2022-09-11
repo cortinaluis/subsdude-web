@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# development assets for subtitle editing
+*.mp4
+*.vtt
+*.srt
